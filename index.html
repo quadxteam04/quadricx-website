@@ -553,20 +553,19 @@
                 overflow: hidden !important;
                 touch-action: none;
                 overscroll-behavior: none;
-                /* Hide scrollbar */
                 scrollbar-width: none;
-                /* Firefox */
                 -ms-overflow-style: none;
-                /* IE/Edge */
+
             }
 
             html::-webkit-scrollbar,
             body::-webkit-scrollbar {
                 display: none;
-                /* Chrome, Safari */
             }
 
-
+            .contact {
+                text-align: center;
+            }
 
             .data-stream,
             .particle,
@@ -575,7 +574,7 @@
             }
 
             .container {
-                padding: 10% 4% 6%;
+                padding: 0% 5%;
             }
 
             h1 {
@@ -609,6 +608,7 @@
             }
 
             .footer {
+                bottom: 30px;
                 font-size: 9px;
             }
         }
@@ -1010,7 +1010,7 @@
         gsap.to(".social-links", {
             opacity: 1,
             y: -10,
-            duration: .8
+            duration: .4
         }, "-=0.4")
 
         const canvas = document.getElementById("network");
