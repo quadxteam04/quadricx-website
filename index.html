@@ -547,27 +547,65 @@
 
         @media screen and (max-width: 480px) {
 
+
+            html,
+            body {
+                overflow: hidden !important;
+                touch-action: none;
+                overscroll-behavior: none;
+                /* Hide scrollbar */
+                scrollbar-width: none;
+                /* Firefox */
+                -ms-overflow-style: none;
+                /* IE/Edge */
+            }
+
+            html::-webkit-scrollbar,
+            body::-webkit-scrollbar {
+                display: none;
+                /* Chrome, Safari */
+            }
+
+
+
+            .data-stream,
+            .particle,
+            #network {
+                display: none !important;
+            }
+
+            .container {
+                padding: 10% 4% 6%;
+            }
+
             h1 {
-                font-size: 1.8rem;
+                font-size: 1.7rem;
+            }
+
+            .highlight {
+                width: 90%;
+                max-width: 220px;
+                height: 55px;
+                font-size: 0.9rem;
             }
 
             .desc {
                 font-size: 0.85rem;
             }
 
-            .status {
-                font-size: 10px;
-            }
-
-            .bg-glow {
-                width: 250px;
-                height: 250px;
+            .terminal-body {
+                font-size: 12px;
             }
 
             .social-links a {
-                width: 180px;
+                width: 85%;
+                max-width: 220px;
                 font-size: 12px;
-                padding: 10px;
+            }
+
+            .contact,
+            .contact a {
+                font-size: 12px;
             }
 
             .footer {
