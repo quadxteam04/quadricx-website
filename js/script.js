@@ -13,9 +13,9 @@ window.addEventListener("load", () => {
 function initApp() {
 
     // THEME TOGGLE
-    const themeToggle = document.querySelector(".theme-toggle");
+    const themeToggles = document.querySelectorAll(".theme-toggle");
 
-    if (themeToggle) {
+    if (themeToggles.length > 0) {
         const savedTheme = localStorage.getItem("theme") || "light";
 
         document.documentElement.setAttribute(
@@ -23,24 +23,26 @@ function initApp() {
             savedTheme
         );
 
-        themeToggle.addEventListener("click", () => {
-            const currentTheme =
-                document.documentElement.getAttribute("data-theme");
+        themeToggles.forEach(toggle => {
+            toggle.addEventListener("click", () => {
+                const currentTheme =
+                    document.documentElement.getAttribute("data-theme");
 
-            const newTheme =
-                currentTheme === "dark"
-                    ? "light"
-                    : "dark";
+                const newTheme =
+                    currentTheme === "dark"
+                        ? "light"
+                        : "dark";
 
-            document.documentElement.setAttribute(
-                "data-theme",
-                newTheme
-            );
+                document.documentElement.setAttribute(
+                    "data-theme",
+                    newTheme
+                );
 
-            localStorage.setItem(
-                "theme",
-                newTheme
-            );
+                localStorage.setItem(
+                    "theme",
+                    newTheme
+                );
+            });
         });
     }
 

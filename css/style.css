@@ -200,56 +200,70 @@ body {
 /* dark theme TOGGLE */
 .theme-toggle {
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .toggle-track {
-
     position: relative;
-
-    width: 70px;
-    height: 36px;
-
-    border-radius: 999px;
-
+    width: 64px;
+    height: 32px;
+    border-radius: 30px;
     background: var(--bg-secondary);
-
     border: 1px solid var(--border);
-
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 8px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
 
-    padding: 0 10px;
-
-    overflow: hidden;
+[data-theme="dark"] .toggle-track {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.25);
 }
 
 .sun,
 .moon {
-    font-size: 14px;
+    font-size: 13px;
     z-index: 2;
+    transition: color 0.4s ease, transform 0.4s ease;
+}
+
+.sun {
+    color: #f59e0b; /* Vibrant Yellow */
+}
+
+.moon {
+    color: #94a3b8; /* Muted Blue-gray */
+}
+
+[data-theme="dark"] .sun {
+    color: #475569; /* Muted */
+}
+
+[data-theme="dark"] .moon {
+    color: #60a5fa; /* Vibrant Light Blue */
 }
 
 .toggle-thumb {
-
     position: absolute;
-
-    left: 4px;
-    top: 4px;
-
+    left: 3px;
+    top: 2px;
     width: 26px;
     height: 26px;
-
     border-radius: 50%;
-
-    background: var(--primary);
-
-    transition: var(--transition);
-
-    box-shadow: var(--shadow-sm);
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), background-color 0.4s ease;
+    z-index: 1;
 }
+
 [data-theme="dark"] .toggle-thumb {
-    left: calc(100% - 30px);
+    transform: translateX(30px);
+    background: #0f172a;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
 
@@ -344,7 +358,7 @@ display: flex;
 }
 
 .nav-links a:hover {
-    color: #4f9ea1;
+    color: var(--primary);
 }
 
 .cta-btn {
@@ -353,7 +367,7 @@ display: flex;
     border-radius: 50px;
 
     background: var(--primary);
-    color: var(--text);
+    color: #ffffff;
 
     font-weight: 600;
 
@@ -1439,7 +1453,8 @@ background:
 
 backdrop-filter: blur(20px);
 
-border: 1px solid var(--glass-border);
+border: 1px solid rgba(143, 211, 255, 0.15);
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 
 transition:
     transform .45s ease,
@@ -2207,9 +2222,10 @@ RESPONSIVE
 
 .solution-card {
     background: var(--card);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(143, 211, 255, 0.15);
     border-radius: 24px;
     overflow: hidden;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
     transition: var(--transition);
 }
 
@@ -2533,15 +2549,15 @@ RESPONSIVE
         color-mix(in srgb, var(--btn-text) 85%, transparent);
 }
 
-.cta-btn {
+.cta-card .cta-btn {
 
-    background: var(--card);
+    background: #ffffff;
 
     color: var(--primary);
 
     padding: 16px 32px;
 
-    border-radius: 16px;
+    border-radius: 50px;
 
     font-weight: 700;
 
@@ -2552,7 +2568,7 @@ RESPONSIVE
     white-space: nowrap;
 }
 
-.cta-btn:hover {
+.cta-card .cta-btn:hover {
 
     transform: translateY(-2px);
 
@@ -2651,11 +2667,21 @@ margin-bottom: 30px;
    LOGO
 =================================== */
 
-.footer-logo img {
-
+.footer-logo {
+    position: relative;
+    display: inline-block;
     width: 200px;
-
+    height: 45px;
     margin-bottom: 10px;
+}
+
+.footer-logo img {
+    width: 200px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: var(--transition);
 }
 
 .footer-about p {

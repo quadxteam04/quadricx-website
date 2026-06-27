@@ -154,6 +154,16 @@
 
         <!-- <div class="loader-sub">Booting Digital Experience</div> -->
         <div class="loader-sub">Welcome to World of Quadricx</div>
+        
+        <!-- Simple Lottie Loader -->
+        <dotlottie-wc 
+            src="https://lottie.host/e6db61c9-5816-4dec-9d82-77ed7205f764/MXOFCGS5tA.lottie" 
+            background="transparent" 
+            speed="1" 
+            style="width: 80px; height: 80px; margin-top: 15px; opacity: 0; animation: fadeUp 1s ease forwards 1s;" 
+            loop 
+            autoplay>
+        </dotlottie-wc>
         <!-- <div class="loader-sub">Crafting Digital Experiences That Define the Future</div> -->
         <!-- <div class="loader-sub">Initializing Digital Core</div> -->
     </div>
@@ -183,21 +193,18 @@
             </nav>
 
 
-            <div class="theme-toggle computer-screen-toggle" aria-label="Toggle Theme">
-
-                <div class="toggle-track">
-
-                    <i class="fa-solid fa-sun sun"></i>
-
-                    <i class="fa-solid fa-moon moon"></i>
-
-                    <div class="toggle-thumb"></div>
-
+            <div class="computer-screen-toggle">
+                <div class="theme-toggle" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+                    <div class="toggle-track">
+                        <i class="fa-solid fa-sun sun"></i>
+                        <i class="fa-solid fa-moon moon"></i>
+                        <div class="toggle-thumb"></div>
+                    </div>
                 </div>
-                <a href="#contact" class="cta-btn">
+                
+                <button type="button" class="cta-btn border-0" data-bs-toggle="modal" data-bs-target="#contactModal">
                     Let's Talk
-                </a>
-
+                </button>
             </div>
 
 
@@ -210,13 +217,23 @@
         </div>
 
         <div class="mobile-menu">
-            <ul>
+            <ul class="w-100 px-4">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li class="mt-4 pt-4 border-top border-secondary border-opacity-25 mx-4">
+                <li class="mt-4 pt-4 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+                    <span class="fw-medium">Theme</span>
+                    <div class="theme-toggle" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+                        <div class="toggle-track">
+                            <i class="fa-solid fa-sun sun"></i>
+                            <i class="fa-solid fa-moon moon"></i>
+                            <div class="toggle-thumb"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="mt-4">
                     <a href="#" class="cta-btn border-0 py-3 px-4 w-100 d-block" data-bs-toggle="modal" data-bs-target="#contactModal" style="font-size: 1.2rem; text-align: center;">
                         Get In Touch
                     </a>
@@ -621,8 +638,8 @@
                     <div class="footer-col footer-about">
 
                         <a href="#" class="footer-logo">
-                            <!-- <img src="/images/logo/logo-favicon.svg" alt="Quadricx"> -->
-                            <img src="/images/logo/logo-footer.svg" alt="Quadricx">
+                            <img src="/images/logo/Quadricx.svg" alt="Quadricx" class="logo-light">
+                            <img src="/images/logo/Quadricx-dark.svg" alt="Quadricx" class="logo-dark">
                         </a>
 
                         <p>
@@ -760,9 +777,20 @@
         .contact-input-wrapper:focus-within i {
             color: var(--primary) !important;
         }
+        .contact-input::placeholder {
+            color: #94a3b8 !important;
+            opacity: 1 !important;
+        }
+        [data-theme="dark"] .contact-input::placeholder {
+            color: #64748b !important;
+        }
+        .custom-close-btn:hover {
+            opacity: 1 !important;
+            transform: scale(1.1);
+        }
     </style>
     <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content border-0 shadow-lg overflow-hidden" style="background-color: var(--card); color: var(--text); border-radius: 24px;">
                 <div class="row g-0">
                     <!-- Left Side: Branding / Info -->
@@ -790,7 +818,9 @@
                     </div>
                     <!-- Right Side: Form -->
                     <div class="col-md-7 p-4 p-md-5 position-relative">
-                        <button type="button" class="btn-close position-absolute top-0 end-0 m-4" data-bs-dismiss="modal" aria-label="Close" style="background-color: var(--bg-secondary); border-radius: 50%; opacity: 0.8; padding: 12px; z-index: 10;"></button>
+                        <button type="button" class="position-absolute top-0 end-0 m-4 border-0 d-flex justify-content-center align-items-center custom-close-btn" data-bs-dismiss="modal" aria-label="Close" style="background-color: var(--bg-secondary); color: var(--text); border-radius: 50%; opacity: 0.8; width: 40px; height: 40px; z-index: 10; transition: all 0.3s ease;">
+                            <i class="fa-solid fa-xmark fs-5"></i>
+                        </button>
                         
                         <h4 class="fw-bold mb-4 d-md-none">Send us a message</h4>
                         <h4 class="fw-bold mb-4 d-none d-md-block">Project Details</h4>
