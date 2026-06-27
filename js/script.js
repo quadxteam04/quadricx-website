@@ -81,6 +81,25 @@ function initApp() {
         });
     }
 
+    // Contact Form Submit Handler
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const formValues = Object.fromEntries(formData.entries());
+            console.log("Contact Form Submitted:", formValues);
+            // Later we will implement Email functionality here
+            
+            // Close the modal
+            const contactModal = bootstrap.Modal.getInstance(document.getElementById('contactModal'));
+            if (contactModal) {
+                contactModal.hide();
+            }
+            contactForm.reset();
+        });
+    }
+
     // Back To Top
     const backToTopBtn = document.getElementById("backToTop");
 

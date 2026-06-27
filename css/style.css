@@ -443,8 +443,7 @@ display: flex;
 
 @media (max-width: 992px) {
 
-    .navbar,
-    .cta-btn {
+    .navbar {
         display: none;
     }
 
@@ -2993,6 +2992,13 @@ margin-bottom: 30px;
 =================================== */
 
 @media (max-width: 991px) {
+
+    .cta-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 30px;
+        gap: 25px;
+    }
 
     .footer {
 
