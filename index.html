@@ -217,28 +217,31 @@
         </div>
 
         <div class="mobile-menu">
-            <ul class="w-100 px-4">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li class="mt-4 pt-4 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
-                    <span class="fw-medium">Theme</span>
-                    <div class="theme-toggle" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
-                        <div class="toggle-track">
-                            <i class="fa-solid fa-sun sun"></i>
-                            <i class="fa-solid fa-moon moon"></i>
-                            <div class="toggle-thumb"></div>
+            <div class="w-100 h-100 d-flex flex-column justify-content-center px-4">
+                <ul class="nav-list w-100 m-0 p-0" style="max-width: 400px; margin: 0 auto !important;">
+                    <li><a href="#home"><i class="fa-solid fa-house me-3"></i> Home</a></li>
+                    <li><a href="#about"><i class="fa-solid fa-user me-3"></i> About</a></li>
+                    <li><a href="#product"><i class="fa-solid fa-box-open me-3"></i> Products</a></li>
+                    <li><a href="#services"><i class="fa-solid fa-layer-group me-3"></i> Services</a></li>
+                    <li><a href="#contact"><i class="fa-solid fa-envelope me-3"></i> Contact</a></li>
+                    
+                    <li class="mt-4 pt-4 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center px-3">
+                        <span class="fw-medium text-secondary" style="font-size: 1.2rem; display: flex; align-items: center;"><i class="fa-solid fa-palette me-3" style="color: var(--primary); width: 30px; text-align: center;"></i> Theme</span>
+                        <div class="theme-toggle" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+                            <div class="toggle-track">
+                                <i class="fa-solid fa-sun sun"></i>
+                                <i class="fa-solid fa-moon moon"></i>
+                                <div class="toggle-thumb"></div>
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li class="mt-4">
-                    <a href="#" class="cta-btn border-0 py-3 px-4 w-100 d-block" data-bs-toggle="modal" data-bs-target="#contactModal" style="font-size: 1.2rem; text-align: center;">
-                        Get In Touch
-                    </a>
-                </li>
-            </ul>
+                    </li>
+                    <li class="mt-4">
+                        <a href="#" class="cta-btn border-0 py-3 px-4 w-100 d-flex justify-content-center align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#contactModal" style="font-size: 1.1rem; border-radius: 12px; color: #fff;">
+                            <i class="fa-solid fa-paper-plane" style="color: #fff;"></i> Get In Touch
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </header>
 
@@ -295,7 +298,8 @@
 
                 <div class="hero-device" style="display: flex; justify-content: center; align-items: center; width: 100%; scale: 1.5; margin-top: 1rem;">
 
-                    <dotlottie-wc src="https://lottie.host/53de10fa-f248-4a9e-9df3-14075dee161c/LAFqyOWiQI.lottie" style="width: 100%; max-width: 850px; height: auto; transform: scale(1.2);" loop autoplay></dotlottie-wc>
+                    <!-- <dotlottie-wc src="https://lottie.host/53de10fa-f248-4a9e-9df3-14075dee161c/LAFqyOWiQI.lottie" style="width: 100%; max-width: 850px; height: auto; transform: scale(1.2);" loop autoplay></dotlottie-wc> -->
+                    <img src="./images/dashboard-hero.svg" alt="Dashboard Hero" style="width: 100%; max-width: 850px; height: auto; transform: scale(0.8);">
 
                 </div>
 
@@ -393,26 +397,22 @@
                     <div class="countries">
 
                         <div class="country">
-                            <span class="flag">🇮🇳</span>
-                            <!-- <img src="./images/logo/india-flag-icon.svg" alt="India Flag"> -->
+                            <img src="https://flagcdn.com/in.svg" width="24" alt="India Flag" style="border-radius: 2px;">
                             <span>India</span>
                         </div>
 
                         <div class="country">
-                            <span class="flag">🇸🇬</span>
-                            <!-- <img src="./images/logo/singpore.svg" alt="singapore flag"> -->
+                            <img src="https://flagcdn.com/sg.svg" width="24" alt="Singapore Flag" style="border-radius: 2px;">
                             <span>Singapore</span>
                         </div>
 
                         <div class="country">
-                            <span class="c">🇧🇳</span>
-                            <!-- <img src="./images/logo/brunei.svg" alt="brunei flag"> -->
+                            <img src="https://flagcdn.com/bn.svg" width="24" alt="Brunei Flag" style="border-radius: 2px;">
                             <span>Brunei</span>
                         </div>
 
                         <div class="country">
-                            <span class="flag">🇺🇸</span>
-                            <!-- <img src="./images/logo/USA.svg" alt="usa flag"> -->
+                            <img src="https://flagcdn.com/us.svg" width="24" alt="USA Flag" style="border-radius: 2px;">
                             <span>USA</span>
                         </div>
 
@@ -831,14 +831,14 @@
                                     <label for="nameInput" class="form-label fw-semibold small text-uppercase" style="color: var(--text-secondary); letter-spacing: 1px; font-size: 0.75rem;">Full Name</label>
                                     <div class="position-relative contact-input-wrapper">
                                         <i class="fas fa-user position-absolute top-50 start-0 translate-middle-y ms-3" style="color: var(--text-secondary); z-index: 5;"></i>
-                                        <input type="text" class="form-control contact-input shadow-none" id="nameInput" name="name" placeholder="John Doe" required style="background-color: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 14px 44px; transition: all 0.3s ease;">
+                                        <input type="text" class="form-control contact-input shadow-none" id="nameInput" name="name" placeholder="Enter your name" required style="background-color: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 14px 44px; transition: all 0.3s ease;">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 mb-4">
                                     <label for="emailInput" class="form-label fw-semibold small text-uppercase" style="color: var(--text-secondary); letter-spacing: 1px; font-size: 0.75rem;">Email Address</label>
                                     <div class="position-relative contact-input-wrapper">
                                         <i class="fas fa-envelope position-absolute top-50 start-0 translate-middle-y ms-3" style="color: var(--text-secondary); z-index: 5;"></i>
-                                        <input type="email" class="form-control contact-input shadow-none" id="emailInput" name="email" placeholder="john@example.com" required style="background-color: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 14px 44px; transition: all 0.3s ease;">
+                                        <input type="email" class="form-control contact-input shadow-none" id="emailInput" name="email" placeholder="Enter your email id" required style="background-color: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 14px 44px; transition: all 0.3s ease;">
                                     </div>
                                 </div>
                             </div>
@@ -847,7 +847,7 @@
                                 <label for="phoneInput" class="form-label fw-semibold small text-uppercase" style="color: var(--text-secondary); letter-spacing: 1px; font-size: 0.75rem;">Phone Number</label>
                                 <div class="position-relative contact-input-wrapper">
                                     <i class="fas fa-phone position-absolute top-50 start-0 translate-middle-y ms-3" style="color: var(--text-secondary); z-index: 5;"></i>
-                                    <input type="tel" class="form-control contact-input shadow-none" id="phoneInput" name="phone" placeholder="+1 234 567 890" style="background-color: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 14px 44px; transition: all 0.3s ease;">
+                                    <input type="tel" class="form-control contact-input shadow-none" id="phoneInput" name="phone" placeholder="Enter phone number" style="background-color: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 14px 44px; transition: all 0.3s ease;">
                                 </div>
                             </div>
 
