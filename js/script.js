@@ -433,3 +433,12 @@ function renderServices(data) {
 
 }
 
+// Floating Socials Toggle
+const socialToggle = document.getElementById('socialToggle');
+const floatingSocials = document.getElementById('floatingSocials');
+
+if (socialToggle && floatingSocials) {
+    socialToggle.addEventListener('click', () => {
+        floatingSocials.classList.toggle('tucked');
+    });
+}
