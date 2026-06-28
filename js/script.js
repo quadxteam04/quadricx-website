@@ -264,9 +264,14 @@ function renderTechStack(data) {
 
     data.techStack.items.forEach(item => {
 
+        const isImage = item.icon.startsWith("http") || item.icon.startsWith("/") || item.icon.includes(".svg");
+        const iconHtml = isImage 
+            ? `<img src="${item.icon}" alt="${item.name}" style="width: 24px; height: 24px; object-fit: contain;">` 
+            : `<i class="${item.icon}"></i>`;
+
         markup += `
-            <span>
-                <i class="${item.icon}"></i>
+            <span style="display: flex; align-items: center; gap: 8px;">
+                ${iconHtml}
                 ${item.name}
             </span>
         `;
@@ -315,13 +320,9 @@ function renderServices(data) {
 
             <div class="service-top">
 
-                <span class="service-badge">
-                    ${service.badge || "Service"}
-                </span>
+               
 
-                <span class="service-number">
-                    ${service.number}
-                </span>
+                
 
             </div>
 
