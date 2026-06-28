@@ -716,7 +716,7 @@ display: flex;
 }
 
 .hero-title {
-    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     line-height: 1.05;
     font-weight: 800;
 
@@ -1190,9 +1190,10 @@ display: flex;
 ========================= */
 
 .tech-marquee {
-    padding: 80px 0;
+    padding-top: 5%;
     overflow: hidden;
     position: relative;
+    margin-bottom: -1%;
 }
 
 .tech-marquee-title {
@@ -1423,9 +1424,17 @@ ADD THESE VARIABLES TO YOUR ROOT
 SERVICES - PREMIUM SAAS DESIGN 2026
 ========================================== */
 
+.section-header {
+    margin-bottom: 0 !important;
+}
+
+.section-header .section-description {
+    margin-bottom: 10px !important;
+}
+
 .services {
 position: relative;
-padding: 80px 0 100px 0;
+padding: 60px 0 80px 0;
 /* overflow: hidden; */
 }
 
@@ -1496,7 +1505,7 @@ background:
 
 backdrop-filter: blur(20px);
 
-border: 1px solid rgba(143, 211, 255, 0.15);
+border: 1px solid rgba(143, 210, 255, 0.353);
 box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 
 transition:
@@ -1900,9 +1909,8 @@ RESPONSIVE
 
 @media (max-width: 768px) {
 
-
 .services {
-    padding: 90px 0;
+    padding: 60px 0;
 }
 
 .services-grid {
@@ -1910,20 +1918,53 @@ RESPONSIVE
 }
 
 .service-card {
-
     min-height: auto;
+    padding: 1.25rem;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 0 15px;
+    align-items: start;
+}
 
-    padding: 1.75rem;
+.service-top {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
 }
 
 .service-number {
     font-size: 4rem;
 }
 
-.service-title {
-    font-size: 1.3rem;
+.service-icon {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0;
 }
 
+.service-icon i {
+    font-size: 1.6rem;
+}
+
+.service-title {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+    margin-top: 0;
+}
+
+.service-description {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    margin-bottom: 0;
+}
+
+.service-footer {
+    grid-column: 1 / -1;
+    margin-top: 1.25rem;
+}
 
 }
 
@@ -1934,7 +1975,7 @@ RESPONSIVE
 ========================= */
 
 .experience-section {
-    padding: 80px 0;
+    padding: 60px 0;
     background: var(--bg);
     transition: var(--transition);
 }
@@ -2223,7 +2264,7 @@ RESPONSIVE
 
 /* SAMPLE WORK SECTION */
 .solutions-section {
-    padding: 80px 0;
+    padding: 60px 0;
     background: var(--bg);
 }
 
@@ -2265,7 +2306,7 @@ RESPONSIVE
 
 .solution-card {
     background: var(--card);
-    border: 1px solid rgba(143, 211, 255, 0.15);
+    border: 1px solid rgba(143, 210, 255, 0.353);
     border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
@@ -2328,7 +2369,7 @@ RESPONSIVE
 
 /* OUR APPROACH SECTION */
 .process-section {
-    padding: 80px 0;
+    padding: 60px 0;
 }
 
 .process-layout {
