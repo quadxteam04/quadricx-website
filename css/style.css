@@ -819,6 +819,24 @@ display: flex;
     z-index: 5;
 }
 
+.animated-tech-icon {
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+    width: 150px;
+    height: auto;
+    opacity: 0.8;
+    z-index: 10;
+    pointer-events: none;
+    animation: float-tech 4s ease-in-out infinite;
+}
+
+@keyframes float-tech {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
 /* =========================
    DASHBOARD CARD
 ========================= */
@@ -1132,6 +1150,10 @@ display: flex;
     .hero-trust {
         justify-content: center;
     }
+
+    .hero-device img {
+        transform: scale(0.6) !important;
+    }
 }
 
 @media (max-width: 992px) {
@@ -1180,6 +1202,18 @@ display: flex;
         width: 280px;
         height: 280px;
     }
+    .animated-tech-icon {
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+    width: 120px;
+    height: auto;
+    opacity: 0.8;
+    z-index: 10;
+    pointer-events: none;
+    animation: float-tech 4s ease-in-out infinite;
+}
+
 }
 
 
