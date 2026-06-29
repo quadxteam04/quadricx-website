@@ -71,6 +71,7 @@ html {
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    scroll-padding-top: 80px;
 }
 
 body {
@@ -3418,3 +3419,22 @@ margin-bottom: 24px;
 
 [data-theme="dark"] .footer-social .footer-social-x { color: #ffffff; border-color: #ffffff; }
 [data-theme="dark"] .footer-social .footer-social-x:hover { background: #ffffff; color: #000000; border-color: #ffffff; }
+/* Contact Form Validation Styles */
+.error-message {
+    font-size: 0.8rem;
+    color: #ef4444;
+    margin-top: 6px;
+    display: none;
+    font-weight: 500;
+}
+.contact-input.is-invalid {
+    border-color: #ef4444 !important;
+    background-color: rgba(239, 68, 68, 0.05) !important;
+}
+[data-theme="dark"] .error-message {
+    color: #f87171;
+}
+[data-theme="dark"] .contact-input.is-invalid {
+    border-color: #f87171 !important;
+    background-color: rgba(248, 113, 113, 0.05) !important;
+}

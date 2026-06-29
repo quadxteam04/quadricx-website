@@ -89,6 +89,46 @@ function initApp() {
         contactForm.addEventListener("submit", (e) => {
             e.preventDefault();
             
+            // Validation Logic
+            let isValid = true;
+            const name = document.getElementById("nameInput");
+            const email = document.getElementById("emailInput");
+            const phone = document.getElementById("phoneInput");
+            const message = document.getElementById("messageInput");
+
+            // Reset validations
+            document.querySelectorAll(".contact-input").forEach(input => input.classList.remove("is-invalid"));
+            document.querySelectorAll(".error-message").forEach(msg => msg.style.display = "none");
+
+            if (!name.value.trim()) {
+                name.classList.add("is-invalid");
+                document.getElementById("nameError").style.display = "block";
+                isValid = false;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim() || !emailRegex.test(email.value)) {
+                email.classList.add("is-invalid");
+                document.getElementById("emailError").style.display = "block";
+                isValid = false;
+            }
+            
+            // Phone is optional, but if provided, validate it
+            const phoneRegex = /^[0-9+\-\s()]{7,15}$/;
+            if (phone.value.trim() && !phoneRegex.test(phone.value)) {
+                phone.classList.add("is-invalid");
+                document.getElementById("phoneError").style.display = "block";
+                isValid = false;
+            }
+
+            if (!message.value.trim()) {
+                message.classList.add("is-invalid");
+                document.getElementById("messageError").style.display = "block";
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
             // UI elements for loading state
             const submitBtn = document.getElementById("contactSubmitBtn");
             const btnText = document.getElementById("contactBtnText");

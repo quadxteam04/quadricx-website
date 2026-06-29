@@ -296,7 +296,7 @@
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
 
-                    <a href="#portfolio" class="btn-secondary">
+                    <a href="#product" class="btn-secondary">
                         See Our Work
                         <i class="fa-solid fa-angle-right"></i>
                     </a>
@@ -331,7 +331,7 @@
 
     <!-- 2. marquee section -->
 
-    <section class="tech-marquee">
+    <section id="tech" class="tech-marquee">
 
         <div class="tech-marquee-title" id="techTitle"></div>
 
@@ -692,7 +692,7 @@
 
                             <li><a href="#home">Home</a></li>
 
-                            <li><a href="#services">Work</a></li>
+                            <li><a href="#product">Work</a></li>
 
                             <li><a href="#tech">Technologies</a></li>
 
@@ -839,21 +839,23 @@
                         <h4 class="fw-bold mb-4 d-md-none">Send us a message</h4>
                         <h4 class="fw-bold mb-4 d-none d-md-block">Project Details</h4>
                         
-                        <form id="contactForm">
+                        <form id="contactForm" novalidate>
                             <div class="row">
                                 <div class="col-sm-6 mb-4">
                                     <label for="nameInput" class="form-label fw-semibold small text-uppercase" style="color: var(--text-secondary); letter-spacing: 1px; font-size: 0.75rem;">Full Name</label>
                                     <div class="position-relative contact-input-wrapper">
                                         <i class="fas fa-user position-absolute top-50 start-0 translate-middle-y ms-3" style="color: var(--text-secondary); z-index: 5;"></i>
-                                        <input type="text" class="form-control contact-input shadow-none" id="nameInput" name="name" placeholder="Enter your name" required style="background-color: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 14px 44px; transition: all 0.3s ease;">
+                                        <input type="text" class="form-control contact-input shadow-none" id="nameInput" name="name" placeholder="Enter your name" style="background-color: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 14px 44px; transition: all 0.3s ease;">
                                     </div>
+                                    <div class="error-message" id="nameError">Please enter your full name.</div>
                                 </div>
                                 <div class="col-sm-6 mb-4">
                                     <label for="emailInput" class="form-label fw-semibold small text-uppercase" style="color: var(--text-secondary); letter-spacing: 1px; font-size: 0.75rem;">Email Address</label>
                                     <div class="position-relative contact-input-wrapper">
                                         <i class="fas fa-envelope position-absolute top-50 start-0 translate-middle-y ms-3" style="color: var(--text-secondary); z-index: 5;"></i>
-                                        <input type="email" class="form-control contact-input shadow-none" id="emailInput" name="email" placeholder="Enter your email id" required style="background-color: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 14px 44px; transition: all 0.3s ease;">
+                                        <input type="email" class="form-control contact-input shadow-none" id="emailInput" name="email" placeholder="Enter your email id" style="background-color: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 14px 44px; transition: all 0.3s ease;">
                                     </div>
+                                    <div class="error-message" id="emailError">Please enter a valid email address.</div>
                                 </div>
                             </div>
 
@@ -863,14 +865,16 @@
                                     <i class="fas fa-phone position-absolute top-50 start-0 translate-middle-y ms-3" style="color: var(--text-secondary); z-index: 5;"></i>
                                     <input type="tel" class="form-control contact-input shadow-none" id="phoneInput" name="phone" placeholder="Enter phone number" style="background-color: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 14px 44px; transition: all 0.3s ease;">
                                 </div>
+                                <div class="error-message" id="phoneError">Please enter a valid phone number.</div>
                             </div>
 
                             <div class="mb-4 text-start">
                                 <label for="messageInput" class="form-label fw-semibold small text-uppercase" style="color: var(--text-secondary); letter-spacing: 1px; font-size: 0.75rem;">Message</label>
                                 <div class="position-relative contact-input-wrapper">
                                     <i class="fas fa-comment-alt position-absolute top-0 start-0 ms-3 mt-3" style="color: var(--text-secondary); z-index: 5; padding-top: 2px;"></i>
-                                    <textarea class="form-control contact-input shadow-none" id="messageInput" name="message" rows="4" placeholder="Tell us about your goals and timeline..." required style="background-color: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 14px 44px; transition: all 0.3s ease;"></textarea>
+                                    <textarea class="form-control contact-input shadow-none" id="messageInput" name="message" rows="4" placeholder="Tell us about your goals and timeline..." style="background-color: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 14px 44px; transition: all 0.3s ease;"></textarea>
                                 </div>
+                                <div class="error-message" id="messageError">Please enter your message.</div>
                             </div>
 
                             <div class="mt-4 pt-2">
