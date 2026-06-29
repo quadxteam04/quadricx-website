@@ -88,17 +88,48 @@ function initApp() {
     if (contactForm) {
         contactForm.addEventListener("submit", (e) => {
             e.preventDefault();
+            
+            // UI elements for loading state
+            const submitBtn = document.getElementById("contactSubmitBtn");
+            const btnText = document.getElementById("contactBtnText");
+            const btnIcon = document.getElementById("contactBtnIcon");
+            const spinner = document.getElementById("contactSpinner");
+            
+            // Set loading state
+            if (submitBtn) submitBtn.disabled = true;
+            if (btnText) btnText.textContent = "Sending...";
+            if (btnIcon) btnIcon.classList.add("d-none");
+            if (spinner) spinner.classList.remove("d-none");
+            
             const formData = new FormData(contactForm);
             const formValues = Object.fromEntries(formData.entries());
             console.log("Contact Form Submitted:", formValues);
-            // Later we will implement Email functionality here
             
-            // Close the modal
-            const contactModal = bootstrap.Modal.getInstance(document.getElementById('contactModal'));
-            if (contactModal) {
-                contactModal.hide();
-            }
-            contactForm.reset();
+            // Simulate delay for email integration
+            setTimeout(() => {
+                // Reset loading state
+                if (submitBtn) submitBtn.disabled = false;
+                if (btnText) btnText.textContent = "Send Message";
+                if (btnIcon) btnIcon.classList.remove("d-none");
+                if (spinner) spinner.classList.add("d-none");
+                
+                // Close the contact modal
+                const contactModalEl = document.getElementById('contactModal');
+                if (contactModalEl) {
+                    const contactModal = bootstrap.Modal.getInstance(contactModalEl) || new bootstrap.Modal(contactModalEl);
+                    contactModal.hide();
+                }
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Show success modal
+                const successModalEl = document.getElementById('successModal');
+                if (successModalEl) {
+                    const successModal = bootstrap.Modal.getInstance(successModalEl) || new bootstrap.Modal(successModalEl);
+                    successModal.show();
+                }
+            }, 1500);
         });
     }
 
