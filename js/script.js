@@ -83,95 +83,7 @@ function initApp() {
         });
     }
 
-    // Contact Form Submit Handler
-    const contactForm = document.getElementById("contactForm");
-    if (contactForm) {
-        contactForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            
-            // Validation Logic
-            let isValid = true;
-            const name = document.getElementById("nameInput");
-            const email = document.getElementById("emailInput");
-            const phone = document.getElementById("phoneInput");
-            const message = document.getElementById("messageInput");
 
-            // Reset validations
-            document.querySelectorAll(".contact-input").forEach(input => input.classList.remove("is-invalid"));
-            document.querySelectorAll(".error-message").forEach(msg => msg.style.display = "none");
-
-            if (!name.value.trim()) {
-                name.classList.add("is-invalid");
-                document.getElementById("nameError").style.display = "block";
-                isValid = false;
-            }
-
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!email.value.trim() || !emailRegex.test(email.value)) {
-                email.classList.add("is-invalid");
-                document.getElementById("emailError").style.display = "block";
-                isValid = false;
-            }
-            
-            // Phone is optional, but if provided, validate it
-            const phoneRegex = /^[0-9+\-\s()]{7,15}$/;
-            if (phone.value.trim() && !phoneRegex.test(phone.value)) {
-                phone.classList.add("is-invalid");
-                document.getElementById("phoneError").style.display = "block";
-                isValid = false;
-            }
-
-            if (!message.value.trim()) {
-                message.classList.add("is-invalid");
-                document.getElementById("messageError").style.display = "block";
-                isValid = false;
-            }
-
-            if (!isValid) return;
-
-            // UI elements for loading state
-            const submitBtn = document.getElementById("contactSubmitBtn");
-            const btnText = document.getElementById("contactBtnText");
-            const btnIcon = document.getElementById("contactBtnIcon");
-            const spinner = document.getElementById("contactSpinner");
-            
-            // Set loading state
-            if (submitBtn) submitBtn.disabled = true;
-            if (btnText) btnText.textContent = "Sending...";
-            if (btnIcon) btnIcon.classList.add("d-none");
-            if (spinner) spinner.classList.remove("d-none");
-            
-            const formData = new FormData(contactForm);
-            const formValues = Object.fromEntries(formData.entries());
-            console.log("Contact Form Submitted:", formValues);
-            
-            // Simulate delay for email integration
-            setTimeout(() => {
-                // Reset loading state
-                if (submitBtn) submitBtn.disabled = false;
-                if (btnText) btnText.textContent = "Send Message";
-                if (btnIcon) btnIcon.classList.remove("d-none");
-                if (spinner) spinner.classList.add("d-none");
-                
-                // Close the contact modal
-                const contactModalEl = document.getElementById('contactModal');
-                if (contactModalEl) {
-                    const contactModal = bootstrap.Modal.getInstance(contactModalEl) || new bootstrap.Modal(contactModalEl);
-                    contactModal.hide();
-                }
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Show success modal
-                const successModalEl = document.getElementById('successModal');
-                if (successModalEl) {
-                    const successModal = bootstrap.Modal.getInstance(successModalEl) || new bootstrap.Modal(successModalEl);
-                    successModal.show();
-                }
-            }, 1500);
-        });
-    }
 
     // Back To Top
     const backToTopBtn = document.getElementById("backToTop");
@@ -511,5 +423,137 @@ const floatingSocials = document.getElementById('floatingSocials');
 if (socialToggle && floatingSocials) {
     socialToggle.addEventListener('click', () => {
         floatingSocials.classList.toggle('tucked');
+    });
+}
+
+/* =========================
+   CONTACT FORM INTEGRATION
+========================= */
+
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // Get inputs
+        const nameInput = document.getElementById('nameInput');
+        const emailInput = document.getElementById('emailInput');
+        const phoneInput = document.getElementById('phoneInput');
+        const messageInput = document.getElementById('messageInput');
+
+        // Get error elements
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const phoneError = document.getElementById('phoneError');
+        const messageError = document.getElementById('messageError');
+
+        // Reset errors
+        nameError.style.display = 'none';
+        emailError.style.display = 'none';
+        phoneError.style.display = 'none';
+        messageError.style.display = 'none';
+        
+        // Remove invalid classes
+        nameInput.classList.remove('is-invalid');
+        emailInput.classList.remove('is-invalid');
+        phoneInput.classList.remove('is-invalid');
+        messageInput.classList.remove('is-invalid');
+
+        let isValid = true;
+
+        if (!nameInput.value.trim()) {
+            nameError.style.display = 'block';
+            nameInput.classList.add('is-invalid');
+            isValid = false;
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+            emailError.style.display = 'block';
+            emailInput.classList.add('is-invalid');
+            isValid = false;
+        }
+
+        if (!phoneInput.value.trim()) {
+            phoneError.style.display = 'block';
+            phoneInput.classList.add('is-invalid');
+            isValid = false;
+        }
+
+        if (!messageInput.value.trim()) {
+            messageError.style.display = 'block';
+            messageInput.classList.add('is-invalid');
+            isValid = false;
+        }
+
+        if (!isValid) return;
+
+        // UI State: Loading
+        const submitBtn = document.getElementById('contactSubmitBtn');
+        const btnText = document.getElementById('contactBtnText');
+        const btnIcon = document.getElementById('contactBtnIcon');
+        const spinner = document.getElementById('contactSpinner');
+
+        btnText.textContent = 'Sending...';
+        if (btnIcon) btnIcon.classList.add('d-none');
+        if (spinner) spinner.classList.remove('d-none');
+        submitBtn.disabled = true;
+
+        try {
+            const payload = {
+                name: nameInput.value.trim(),
+                email: emailInput.value.trim(),
+                phone: phoneInput.value.trim(),
+                message: messageInput.value.trim(),
+                subject: ""
+            };
+
+            const url = `https://quadricx-web-be.onrender.com/send-mail`;
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok || response.status === 200 || response.type === 'opaque') {
+                const contactModalEl = document.getElementById('contactModal');
+                const contactModal = bootstrap.Modal.getInstance(contactModalEl) || new bootstrap.Modal(contactModalEl);
+                contactModal.hide();
+
+                contactForm.reset();
+
+                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+            } else {
+                console.error('API Error:', response.statusText);
+                const contactModalEl = document.getElementById('contactModal');
+                if (contactModalEl) {
+                    const contactModal = bootstrap.Modal.getInstance(contactModalEl) || new bootstrap.Modal(contactModalEl);
+                    contactModal.hide();
+                }
+                const failedModal = new bootstrap.Modal(document.getElementById('failedModal'));
+                failedModal.show();
+            }
+
+        } catch (error) {
+            console.error('Request failed:', error);
+            const contactModalEl = document.getElementById('contactModal');
+            if (contactModalEl) {
+                const contactModal = bootstrap.Modal.getInstance(contactModalEl) || new bootstrap.Modal(contactModalEl);
+                contactModal.hide();
+            }
+            const failedModal = new bootstrap.Modal(document.getElementById('failedModal'));
+            failedModal.show();
+        } finally {
+            // Restore UI
+            btnText.textContent = 'Send Message';
+            if (btnIcon) btnIcon.classList.remove('d-none');
+            if (spinner) spinner.classList.add('d-none');
+            submitBtn.disabled = false;
+        }
     });
 }
