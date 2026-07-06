@@ -3399,6 +3399,7 @@ margin-bottom: 24px;
 .social-fb { background: #1877F2; }
 .social-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
 .social-x { background: #000000; }
+.social-yt { background: #FF0000; }
 
 [data-theme="dark"] .social-x {
     background: #ffffff;
@@ -3417,8 +3418,15 @@ margin-bottom: 24px;
 .footer-social .footer-social-x { color: #000000; border-color: #000000; }
 .footer-social .footer-social-x:hover { background: #000000; color: #ffffff; border-color: #000000; }
 
+.footer-social .footer-social-yt { color: #000000; border-color: #000000; }
+.footer-social .footer-social-yt:hover { background: #fd0909; color: #ffffff; border-color: #000000; }
+
 [data-theme="dark"] .footer-social .footer-social-x { color: #ffffff; border-color: #ffffff; }
 [data-theme="dark"] .footer-social .footer-social-x:hover { background: #ffffff; color: #000000; border-color: #ffffff; }
+
+[data-theme="dark"] .footer-social .footer-social-yt { color: #ffffff; border-color: #ffffff; }
+[data-theme="dark"] .footer-social .footer-social-yt:hover { background: #ffffff; color: #000000; border-color: #ffffff; }
+
 /* Contact Form Validation Styles */
 .error-message {
     font-size: 0.8rem;
