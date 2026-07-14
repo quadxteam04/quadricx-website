@@ -106,13 +106,10 @@ body {
   visibility: hidden;
 }
 
-/* logo */
-.loader-brand {
-  margin-bottom: 22px;
-}
-
 .loader-logo {
-  width: 100px;
+  width: 200px;
+  height: auto;
+  object-fit: contain;
   opacity: 0;
   animation: fadeUp 1.2s ease forwards;
   filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.15));
