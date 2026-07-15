@@ -10,6 +10,7 @@ window.addEventListener("load", () => {
 
     }, 3500);
 });
+
 function initApp() {
 
     // THEME TOGGLE
@@ -198,7 +199,12 @@ if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
         yoyo: true,
         ease: "sine.inOut"
     });
-    } 
+
+    // Refresh all ScrollTrigger positions now that the loader is hidden
+    // and the real page layout is stable.
+    ScrollTrigger.refresh();
+
+    }
 
 
 
@@ -301,14 +307,6 @@ function renderServices(data) {
             <div class="card-glow"></div>
             <div class="shine"></div>
 
-            <div class="service-top">
-
-               
-
-                
-
-            </div>
-
             <div class="service-icon">
                 <i class="${service.icon}"></i>
             </div>
@@ -320,18 +318,6 @@ function renderServices(data) {
             <p class="service-description">
                 ${service.description}
             </p>
-
-            <div class="service-footer">
-
-                <span class="service-cta">
-                    ${service.cta || "Learn More"}
-                </span>
-
-                <span class="service-arrow">
-                    ↗
-                </span>
-
-            </div>
 
         </article>
 
@@ -397,6 +383,8 @@ function renderServices(data) {
                 stagger: 0.15,
 
                 ease: "power4.out",
+
+                immediateRender: false,
 
                 scrollTrigger: {
 
